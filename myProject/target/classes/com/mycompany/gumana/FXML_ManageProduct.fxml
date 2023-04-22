@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #243447;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gumana.FXML_ManageProductController">
+   <left>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="250.0" style="-fx-background-color: #07172a;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="63.0" layoutY="32.0" text="Welcome," textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="username" alignment="CENTER" contentDisplay="CENTER" layoutY="77.0" prefHeight="54.0" prefWidth="258.0" text="Username" textFill="#c51f5d">
+               <font>
+                  <Font name="Tahoma" size="30.0" />
+               </font>
+            </Label>
+            <Line endX="-130.5999755859375" endY="6.399993896484375" layoutX="375.0" layoutY="126.0" startX="-369.3999328613281" startY="6.399993896484375" stroke="WHITE" />
+            <Label alignment="CENTER" layoutX="55.0" layoutY="144.0" text="You are logged in as" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="accountType" alignment="CENTER" layoutX="7.0" layoutY="173.0" prefHeight="20.0" prefWidth="242.0" text="User" textFill="#c51f5d">
+               <font>
+                  <Font name="Tahoma" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="viewDetailsbtn" layoutX="56.0" layoutY="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionViewProducts" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #c51f5d;" text="Home" textAlignment="CENTER" textFill="#eeeeee">
+               <graphic>
+                  <FontIcon iconColor="#eeeeee" iconLiteral="fas-home" iconSize="15" selectionEnd="0" />
+               </graphic>
+               <font>
+                  <Font name="Verdana" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="addProductButton" layoutX="56.0" layoutY="310.0" mnemonicParsing="false" onAction="#addProductButton" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #c51f5d;" styleClass="update-btn" text="Add a Product" textAlignment="CENTER" textFill="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconColor="#eeeeee" iconLiteral="cil-plus" iconSize="15" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="manageProductsbtn" layoutX="56.0" layoutY="380.0" mnemonicParsing="false" onAction="#actionManageProducts" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #c51f5d;" styleClass="update-btn" text="Manage Products" textFill="#eeeeee">
+               <graphic>
+                  <FontIcon iconColor="#eeeeee" iconLiteral="cil-library-add" iconSize="15" />
+               </graphic>
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btn_logout" layoutX="27.0" layoutY="618.0" mnemonicParsing="false" onAction="#btn_logout" prefHeight="35.0" prefWidth="194.0" style="-fx-background-color: #c51f5d;" text="Logout" textFill="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="15.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconColor="#eeeeee" iconLiteral="cil-account-logout" iconSize="15" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <Pane prefHeight="720.0" prefWidth="774.0" styleClass="card" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="30.0" layoutY="25.0" prefHeight="38.0" prefWidth="315.0" text="Managing Products..." textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="30.0" />
+               </font>
+            </Label>
+            <TableView fx:id="viewProduct" layoutX="50.0" layoutY="160.0" onMouseClicked="#selectProd" prefHeight="516.0" prefWidth="730.0" style="-fx-background-color: #243447;">
+              <columns>
+                <TableColumn fx:id="colName" prefWidth="200.26666831970215" text="Name" />
+                <TableColumn fx:id="colPrice" prefWidth="107.99993896484375" text="Price" />
+                  <TableColumn fx:id="colQuantity" prefWidth="75.20001220703125" text="Quantity" />
+                  <TableColumn fx:id="colModel" prefWidth="86.39996337890625" text="Model" />
+                  <TableColumn fx:id="colBrand" prefWidth="122.40005493164062" text="Brand" />
+                  <TableColumn fx:id="colCat" prefWidth="143.99993896484375" text="Category" />
+              </columns>
+            </TableView>
+            <TextField fx:id="textSearch" layoutX="59.0" layoutY="105.0" prefHeight="25.0" prefWidth="384.0" />
+            <Button fx:id="btn_update" layoutX="540.0" layoutY="103.0" mnemonicParsing="false" onAction="#btn_actionUpdate" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #c51f5d;" styleClass="update-btn" text="Update" textFill="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconColor="#eeeeee" iconLiteral="fab-superpowers" iconSize="15" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btn_delete" layoutX="671.0" layoutY="103.0" mnemonicParsing="false" onAction="#btn_actionDelete" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #c51f5d;" styleClass="update-btn" text="Delete" textFill="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconColor="#eeeeee" iconLiteral="fas-trash" iconSize="13" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <FontIcon iconColor="#c51f5d" iconLiteral="cil-search" iconSize="20" layoutX="31.0" layoutY="127.0" />
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="520.0" style="-fx-background-color: #141d26;">
+         <children>
+            <Button fx:id="dashboardMinimizeButton" mnemonicParsing="false" onAction="#dashboardMinimizeButtonOnAction" style="-fx-background-color: #141d26;">
+               <HBox.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontIcon iconColor="#c51f5d" iconLiteral="far-window-minimize" iconSize="15" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="dashboardCancelButton" mnemonicParsing="false" onAction="#dashboardCancelButtonOnAction" style="-fx-background-color: #141d26;">
+               <HBox.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontIcon iconColor="#c51f5d" iconLiteral="far-window-close" iconSize="20" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+         <cursor>
+            <Cursor fx:constant="E_RESIZE" />
+         </cursor>
+      </HBox>
+   </top>
+</BorderPane>

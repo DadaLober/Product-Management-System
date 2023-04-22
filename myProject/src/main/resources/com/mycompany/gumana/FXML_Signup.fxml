@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="720.0" style="-fx-background-color: #243447;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gumana.FXML_SignupController">
+   <center>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="380.0" style="-fx-background-color: #243447;">
+         <children>
+            <Button fx:id="btn_register" layoutX="172.0" layoutY="408.0" mnemonicParsing="false" onAction="#btn_register" prefHeight="44.0" prefWidth="79.0" style="-fx-background-color: #243447;" styleClass="update-btn" textFill="#eeeeee">
+               <font>
+                  <Font name="Arial Bold" size="21.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconColor="#c51f5d" iconLiteral="cib-go" iconSize="50" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="14.0" layoutY="219.0" text="First Name:" textFill="WHITE">
+               <font>
+                  <Font name="Verdana" size="17.0" />
+               </font>
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="txt_firstName" layoutX="154.0" layoutY="219.0" prefHeight="30.0" prefWidth="250.0" promptText="First Name">
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="14.0" layoutY="279.0" text="Last Name:" textFill="WHITE">
+               <font>
+                  <Font name="Verdana" size="17.0" />
+               </font>
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+            </Label>
+            <Button fx:id="btn_balik" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#btn_balik" prefHeight="44.0" prefWidth="46.0" style="-fx-background-color: #243447;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <FontIcon iconColor="#c51f5d" iconLiteral="fas-angle-left" iconSize="50" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <CheckBox fx:id="cb_showPassword" layoutX="151.0" layoutY="319.0" mnemonicParsing="false" onAction="#actionshowPassword" text="Show Password" textFill="WHITE">
+               <font>
+                  <Font name="Verdana" size="11.0" />
+               </font>
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </CheckBox>
+            <TextField fx:id="txt_lastName" layoutX="154.0" layoutY="279.0" prefHeight="30.0" prefWidth="250.0" promptText="Last Name">
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txt_username" layoutX="154.0" layoutY="99.0" prefHeight="30.0" prefWidth="250.0" promptText="Username">
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="txt_password" layoutX="154.0" layoutY="159.0" prefHeight="30.0" prefWidth="250.0" promptText="Password">
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </PasswordField>
+            <TextField fx:id="txt_showPassword" layoutX="154.0" layoutY="159.0" prefHeight="30.0" prefWidth="250.0" promptText="Password">
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </TextField>
+            <RadioButton fx:id="ra_user" layoutX="174.0" layoutY="359.0" mnemonicParsing="false" text="User" textFill="WHITE">
+               <font>
+                  <Font name="Verdana" size="17.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="tg_userType" />
+               </toggleGroup>
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <RadioButton fx:id="ra_admin" layoutX="294.0" layoutY="359.0" mnemonicParsing="false" text="Admin" textFill="WHITE" toggleGroup="$tg_userType">
+               <font>
+                  <Font name="Verdana" size="17.0" />
+               </font>
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <Label layoutX="14.0" layoutY="359.0" text="Account Type:" textFill="WHITE">
+               <font>
+                  <Font name="Verdana" size="17.0" />
+               </font>
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER" layoutX="132.0" layoutY="25.0" prefHeight="36.0" prefWidth="170.0" text="Register Here" textFill="WHITE">
+               <font>
+                  <Font name="Verdana" size="23.0" />
+               </font>
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+            </Label>
+            <FontIcon iconColor="#c51f5d" iconLiteral="fas-user" iconSize="30" layoutX="91.0" layoutY="125.0" />
+            <FontIcon iconColor="#c51f5d" iconLiteral="fas-unlock" iconSize="30" layoutX="91.0" layoutY="185.0" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="295.0" style="-fx-background-color: #333333;">
+         <children>
+            <AnchorPane prefHeight="520.0" prefWidth="295.0" style="-fx-background-color: #07172a;">
+               <children>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="20.0" prefHeight="36.0" prefWidth="274.0" text="COMPUTER HARDWARE" textFill="WHITE">
+                     <font>
+                        <Font name="Verdana" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="42.0" layoutY="59.0" text="MONITORING SYSTEM" textFill="WHITE">
+                     <font>
+                        <Font name="Verdana" size="20.0" />
+                     </font>
+                  </Label>
+                  <Line endX="130.66668701171875" endY="-7.62939453125E-6" layoutX="148.0" layoutY="118.0" startX="-134.93333435058594" startY="-7.62939453125E-6" stroke="#eeeeee" />
+                  <Label layoutX="12.0" layoutY="416.0" prefHeight="26.0" prefWidth="277.0" text="Copyrights ©2023 MillerLorenzo." textFill="#eeeeee">
+                     <font>
+                        <Font name="Verdana" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="68.0" layoutY="443.0" prefHeight="20.0" prefWidth="155.0" text="All rights reserved." textFill="#eeeeee">
+                     <font>
+                        <Font name="Verdana" size="16.0" />
+                     </font>
+                  </Label>
+                  <FontIcon iconColor="#eeeeee" iconLiteral="fab-battle-net" iconSize="125" layoutX="83.0" layoutY="302.0" />
+                  <Line endX="130.66668701171875" endY="-7.62939453125E-6" layoutX="147.0" layoutY="394.0" startX="-134.93333435058594" startY="-7.62939453125E-6" stroke="#eeeeee" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="520.0" style="-fx-background-color: #141d26;">
+         <children>
+            <Button fx:id="registerMinimizeButton" mnemonicParsing="false" onAction="#registerMinimizeButtonOnAction" style="-fx-background-color: #141d26;">
+               <HBox.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontIcon iconColor="#c51f5d" iconLiteral="far-window-minimize" iconSize="15" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="registerCancelButton" mnemonicParsing="false" onAction="#registerCancelButtonOnAction" style="-fx-background-color: #141d26;">
+               <HBox.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontIcon iconColor="#c51f5d" iconLiteral="far-window-close" iconSize="20" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+         <cursor>
+            <Cursor fx:constant="E_RESIZE" />
+         </cursor>
+      </HBox>
+   </top>
+</BorderPane>
