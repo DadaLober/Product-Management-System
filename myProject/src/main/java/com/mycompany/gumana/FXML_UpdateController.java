@@ -38,6 +38,8 @@ public class FXML_UpdateController implements Initializable {
     @FXML
     private TextField txt_newproductPrice;
     @FXML
+    private TextField txt_newproductHigh;
+    @FXML
     private TextField txt_newproductModelnum;
     @FXML
     private TextField txt_newproductBrand;
@@ -82,10 +84,29 @@ public class FXML_UpdateController implements Initializable {
             }
             return change;
         }));
+        txt_newproductHigh.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.isAdded()) {
+                if (change.getControlNewText().matches("[0-9]{1,}")) {
+                    return change;
+                }
+                return null;
+            }
+            return change;
+        }));
+        txt_newproductQuantity.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.isAdded()) {
+                if (change.getControlNewText().matches("[0-9]{1,}")) {
+                    return change;
+                }
+                return null;
+            }
+            return change;
+        }));
 
         selectedProd = SelectedProd.getINSTANCE().getSelectedProd();
         txt_newproductName.setText(selectedProd.getName());
         txt_newproductPrice.setText(String.valueOf(selectedProd.getPrice()));
+        txt_newproductHigh.setText(String.valueOf(selectedProd.getHigh()));
         txt_newproductModelnum.setText(selectedProd.getModel());
         txt_newproductBrand.setText(selectedProd.getBrand());
         cb_newcategory.getSelectionModel().select(selectedProd.getCategory());
@@ -129,7 +150,11 @@ public class FXML_UpdateController implements Initializable {
         if (txt_newproductPrice.getText().isBlank()) {
             invalidInp = true;
             alrt.setTitle(INVALID_INPUT);
-            alrt.setContentText(alrt.getContentText() + "Missing Product Price\n");
+            alrt.setContentText(alrt.getContentText() + "Missing Product Lowest Price\n");
+        }if (txt_newproductHigh.getText().isBlank()) {
+            invalidInp = true;
+            alrt.setTitle(INVALID_INPUT);
+            alrt.setContentText(alrt.getContentText() + "Missing Product Highest Price\n");
         }
         if (txt_newproductQuantity.getText().isBlank()) {
             invalidInp = true;
@@ -156,9 +181,10 @@ public class FXML_UpdateController implements Initializable {
         }
         conn = connectDB();
         String productName, productModel, productBrand, productCategory;
-        Integer productPrice, productQuantity;
+        Integer productPrice, productQuantity,productHigh;
         productName = txt_newproductName.getText();
         productPrice = Integer.valueOf(txt_newproductPrice.getText());
+        productHigh= Integer.valueOf(txt_newproductHigh.getText());
         productQuantity = Integer.valueOf(txt_newproductQuantity.getText());
         productModel = txt_newproductModelnum.getText();
         productBrand = txt_newproductBrand.getText();
@@ -169,16 +195,17 @@ public class FXML_UpdateController implements Initializable {
             public void accept(ButtonType response) {
                 if (response == ButtonType.OK) {
                     try {
-                        String sql = "UPDATE `tbl_products` SET `productName`=?,`productPrice`=?,`productQuantity`=?,`productModel`=?"
+                        String sql = "UPDATE `tbl_products` SET `productName`=?,`productPrice`=?,`productHigh`=?,`productQuantity`=?,`productModel`=?"
                                 + ",`productBrand`=?,`productCategory`=? WHERE `prodID`=?";
                         statement = conn.prepareStatement(sql);
                         statement.setString(1, productName);
                         statement.setInt(2, productPrice);
-                        statement.setInt(3, productQuantity);
-                        statement.setString(4, productModel);
-                        statement.setString(5, productBrand);
-                        statement.setString(6, productCategory);
-                        statement.setInt(7, selectedProd.getId());
+                        statement.setInt(3,productHigh);
+                        statement.setInt(4, productQuantity);
+                        statement.setString(5, productModel);
+                        statement.setString(6, productBrand);
+                        statement.setString(7, productCategory);
+                        statement.setInt(8, selectedProd.getId());
                         statement.executeUpdate();
                         new Alert(Alert.AlertType.INFORMATION, "Succesfully Updated!").showAndWait();
                         

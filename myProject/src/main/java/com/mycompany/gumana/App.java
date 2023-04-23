@@ -3,14 +3,12 @@ package com.mycompany.gumana;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 
 /**
@@ -32,8 +30,9 @@ public class App extends Application {
     }
     @Override
     public void start(Stage stage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
+        scene = new Scene(root);
         stage.initStyle(StageStyle.UNDECORATED);
-        scene = new Scene(loadFXML("FXML_Login"));
         scene.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -50,10 +49,13 @@ public class App extends Application {
         });
         stage.setScene(scene);
         stage.show();
+        new animatefx.animation.FadeInDown(root).play();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static void setRoot(String fxml) throws IOException {
+        Parent root = FXMLLoader.load(App.class.getResource(fxml + ".fxml"));
+        scene.setRoot(root);
+        new animatefx.animation.FadeIn(root).play();
         scene.getWindow().sizeToScene();
     }
 

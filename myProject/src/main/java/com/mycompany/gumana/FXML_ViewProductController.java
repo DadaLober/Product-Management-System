@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -68,6 +69,8 @@ public class FXML_ViewProductController implements Initializable {
     @FXML
     private TableColumn<ProductModel, Integer> colPrice;
     @FXML
+    private TableColumn<ProductModel, Integer> HighPrice;
+    @FXML
     private TableColumn<ProductModel, Integer> colQuantity;
     @FXML
     private TableColumn<ProductModel, String> colModel;
@@ -105,7 +108,7 @@ public class FXML_ViewProductController implements Initializable {
         ResultSet result = stmnt.executeQuery();
         prodList.clear();
         while(result.next()){
-            prodList.add(new ProductModel(result.getInt("prodID"),result.getString("productName"),result.getInt("productPrice"),result.getInt("productQuantity"),result.getString("productModel"),result.getString("productBrand"),result.getString("productCategory")));
+            prodList.add(new ProductModel(result.getInt("prodID"),result.getString("productName"),result.getInt("productPrice"),result.getInt("productHigh"),result.getInt("productQuantity"),result.getString("productModel"),result.getString("productBrand"),result.getString("productCategory")));
         }
     }
 
@@ -126,6 +129,7 @@ public class FXML_ViewProductController implements Initializable {
         }
         colName.setCellValueFactory(new PropertyValueFactory("name"));
         colPrice.setCellValueFactory(new PropertyValueFactory("price"));
+        HighPrice.setCellValueFactory(new PropertyValueFactory("high"));
         colQuantity.setCellValueFactory(new PropertyValueFactory("quantity"));
         colModel.setCellValueFactory(new PropertyValueFactory("model"));
         colBrand.setCellValueFactory(new PropertyValueFactory("brand"));
@@ -141,7 +145,9 @@ public class FXML_ViewProductController implements Initializable {
                 String keyword = newVal.toLowerCase();
 
                 return prodModel.getName().toLowerCase().contains(keyword) || 
-                        String.valueOf(prodModel.getPrice()).toLowerCase().contains(keyword) ||
+                        String.valueOf(prodModel.getPrice()).toLowerCase().contains(keyword)
+                        || String.valueOf(prodModel.getQuantity()).toLowerCase().contains(keyword)
+                        ||
                         prodModel.getModel().toLowerCase().contains(keyword) ||
                         prodModel.getBrand().toLowerCase().contains(keyword) ||
                         prodModel.getCategory().toLowerCase().contains(keyword);
@@ -180,11 +186,12 @@ public class FXML_ViewProductController implements Initializable {
 
     @FXML
     private void addProductButton(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FXML_AddProduct.fxml"));
+        Scene scene = new Scene(root);
         Stage newWindow = new Stage();
-        newWindow.setTitle("Add Product");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_AddProduct.fxml"));
         newWindow.initStyle(StageStyle.UNDECORATED);
-        newWindow.setScene(new Scene(loader.load()));
+        newWindow.setScene(scene);
+        new animatefx.animation.FadeInDown(root).play();
         //newWindow.initModality(Modality.APPLICATION_MODAL);
         newWindow.initOwner(((Node) event.getSource()).getScene().getWindow());
         newWindow.showAndWait();

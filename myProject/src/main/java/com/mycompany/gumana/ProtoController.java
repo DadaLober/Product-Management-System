@@ -6,6 +6,7 @@ package com.mycompany.gumana;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,11 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 /**
@@ -41,6 +38,8 @@ public class ProtoController implements Initializable {
     private TextField txt_showPassword;
     @FXML
     private Button loginCancelButton;
+    @FXML
+    private Label loginCheckLabel;
 
 
     @Override
@@ -64,39 +63,46 @@ public class ProtoController implements Initializable {
         }
             return null;
     }
+    public void loginLoginButtonOnAction (ActionEvent e){
+
+        if (lbl_username.getText().isBlank() == false && getPassword().isBlank() == false) {
+            //loginCheckLabel.setText("You try to Login!");
+            btn_login();
+        }else {
+            loginCheckLabel.setText("Please fill out all fields!");
+        }
+    }
+    private String getPassword(){
+        if(txt_showPassword.isVisible()){
+            return txt_showPassword.getText();
+        } else {
+            return lbl_password.getText();
+        }
+    }
 
     @FXML
-    public void btn_login (ActionEvent event){
+    public void btn_login() {
         conn = connectDB();
         try{
-            String sql = "SELECT * FROM tbl_accounts WHERE username = ? and password = ?";
-            statement = conn.prepareStatement(sql);
-            statement.setString(1,lbl_username.getText());
-            statement.setString(2,lbl_password.getText());
-            result = statement.executeQuery();
+            PreparedStatement statement = conn.prepareStatement("select * from tbl_accounts");
+            ResultSet result = statement.executeQuery();
             
-            if(result.next()){
+            while (result.next()){
+                String encryptedPassword = result.getString("password");
+                String Username = result.getString("username");;
                 String user = result.getString("userType");
-                if (user.contains("Administrator")){
-                    new Alert(Alert.AlertType.INFORMATION,"Succesfully logged in!").show();
+                if(lbl_username.getText().equals(Username) && Encryptor.encryptString(getPassword()).equals(encryptedPassword) && user.contains("Administrator")){
                     App.setCurrUser(new UserModel(result.getString("firstName") ,result.getString("userType")));
-                    
                     App.setRoot("FXML_ViewProduct");
-                    System.out.println("login as admin");
-                }
-                else if (user.contains("User")){
-                    new Alert(Alert.AlertType.INFORMATION,"Succesfully logged in!").show();
+                } if(lbl_username.getText().equals(Username) && Encryptor.encryptString(getPassword()).equals(encryptedPassword) && user.contains("User")){
                     App.setCurrUser(new UserModel(result.getString("firstName"),result.getString("userType")));
-                    
                     App.setRoot("FXML_ViewProduct");
-                    System.out.println("login as user");
+                }else {
+                    loginCheckLabel.setText("Invalid Username or Password!");
                 }
     
-            } else {
-                new Alert(Alert.AlertType.ERROR,"Invalid Username or Password!").show();
-                App.setRoot("FXML_Login");
             }
-        }catch (IOException | SQLException e){
+        }catch (IOException | SQLException | NoSuchAlgorithmException e){
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
                 System.out.println(e.getMessage());
                 System.out.println("catch nagrun");
@@ -116,7 +122,6 @@ public class ProtoController implements Initializable {
 
     }
     public void loginRegisterHyperlinkOnAction (ActionEvent e) throws IOException {
-
         App.setRoot("FXML_Signup");
     }
 

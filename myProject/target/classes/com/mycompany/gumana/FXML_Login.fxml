@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -16,11 +16,11 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane prefHeight="520.0" prefWidth="720.0" style="-fx-background-radius: 50%;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gumana.ProtoController">
+<BorderPane prefHeight="520.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gumana.ProtoController">
    <center>
       <AnchorPane prefHeight="720.0" prefWidth="799.0" style="-fx-background-color: #243447;">
          <children>
-            <Button fx:id="btnLogn" layoutX="174.0" layoutY="334.0" mnemonicParsing="false" onAction="#btn_login" prefHeight="74.0" prefWidth="66.0" style="-fx-background-color: #243447;">
+            <Button fx:id="btnLogn" layoutX="174.0" layoutY="334.0" mnemonicParsing="false" onAction="#loginLoginButtonOnAction" prefHeight="74.0" prefWidth="66.0" style="-fx-background-color: #243447;" styleClass="angleleft" stylesheets="@style.css">
                <font>
                   <Font name="Arial Bold" size="37.0" />
                </font>
@@ -31,28 +31,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <CheckBox fx:id="cb_showPassword" layoutX="103.0" layoutY="300.0" mnemonicParsing="false" onAction="#actionshowPassword" text="Show Password" textFill="WHITE">
-               <font>
-                  <Font name="Verdana" size="13.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </CheckBox>
-            <TextField fx:id="lbl_username" layoutX="102.0" layoutY="168.0" prefHeight="30.0" prefWidth="280.0" promptText="Username">
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="txt_showPassword" layoutX="102.0" layoutY="238.0" prefHeight="30.0" prefWidth="280.0" promptText="Password">
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font></TextField>
-            <PasswordField fx:id="lbl_password" layoutX="102.0" layoutY="238.0" prefHeight="30.0" prefWidth="280.0" promptText="Password">
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-            </PasswordField>
             <Label alignment="CENTER" layoutX="53.0" layoutY="62.0" prefHeight="38.0" prefWidth="318.0" text="Hello, Wanna Login?" textFill="WHITE">
                <font>
                   <Font name="Verdana" size="30.0" />
@@ -65,6 +43,34 @@
                   <Font name="Verdana" size="15.0" />
                </font>
             </Hyperlink>
+            <JFXTextField fx:id="lbl_username" focusColor="#c51f5d" layoutX="102.0" layoutY="168.0" prefHeight="30.0" prefWidth="280.0" promptText="Username" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField fx:id="lbl_password" focusColor="#c51f5d" layoutX="102.0" layoutY="238.0" prefHeight="30.0" prefWidth="280.0" promptText="Password" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="15.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXTextField fx:id="txt_showPassword" focusColor="#c51f5d" layoutX="102.0" layoutY="238.0" prefHeight="30.0" prefWidth="280.0" promptText="Password" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXCheckBox fx:id="cb_showPassword" checkedColor="#c51f5d" layoutX="100.0" layoutY="290.0" onAction="#actionshowPassword" text="Show Password" textFill="#eeeeee" unCheckedColor="#eeeeee">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXCheckBox>
+            <Label fx:id="loginCheckLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="117.0" prefHeight="18.0" prefWidth="424.0" textFill="#ff3535">
+               <font>
+                  <Font name="Verdana" size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

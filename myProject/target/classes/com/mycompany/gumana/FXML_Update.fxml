@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-
 
 <BorderPane prefHeight="420.0" prefWidth="720.0" style="-fx-background-color: #243447;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gumana.FXML_UpdateController">
    <center>
@@ -27,33 +26,26 @@
                   <Font name="Tahoma" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txt_newproductName" layoutX="38.0" layoutY="115.0" prefHeight="26.0" prefWidth="295.0" promptText="New Name of Product" />
             <Label layoutX="38.0" layoutY="165.0" text="New Regular Price &amp; Unit:" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txt_newproductPrice" layoutX="38.0" layoutY="185.0" prefHeight="26.0" prefWidth="141.0" promptText="New Price" />
-            <TextField editable="false" layoutX="186.0" layoutY="185.0" prefHeight="26.0" prefWidth="148.0" promptText="Unit" text="1" />
             <Label layoutX="393.0" layoutY="95.0" text="New Model or Item #:" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txt_newproductModelnum" layoutX="391.0" layoutY="115.0" prefHeight="26.0" prefWidth="295.0" promptText="(ex.A2221,p6774y, etc.)" />
             <Label layoutX="391.0" layoutY="165.0" text="New Brand:" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txt_newproductBrand" layoutX="391.0" layoutY="185.0" prefHeight="26.0" prefWidth="295.0" promptText="(ex. HyperX, Razer etc.)" />
             <Label layoutX="391.0" layoutY="235.0" text="New Category:" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="15.0" />
                </font>
             </Label>
-            <ComboBox fx:id="cb_newcategory" layoutX="392.0" layoutY="255.0" prefHeight="26.0" prefWidth="292.0" />
-            <TextField fx:id="txt_newproductQuantity" layoutX="38.0" layoutY="255.0" prefHeight="26.0" prefWidth="295.0" promptText="New Product Quantity" />
             <Button fx:id="btnUpdate" layoutX="34.0" layoutY="334.0" mnemonicParsing="false" onAction="#btn_updateProduct" prefHeight="35.0" prefWidth="650.0" style="-fx-background-color: #c51f5d;" text="Update Product" textFill="WHITE">
                <font>
                   <Font name="Verdana" size="16.0" />
@@ -61,12 +53,50 @@
                <graphic>
                   <FontIcon iconColor="#eeeeee" iconLiteral="fab-superpowers" iconSize="15" />
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label layoutX="38.0" layoutY="235.0" text="New Product Quantity:" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="15.0" />
                </font>
             </Label>
+            <JFXTextField fx:id="txt_newproductName" focusColor="#c51f5d" layoutX="38.0" layoutY="115.0" prefHeight="26.0" prefWidth="295.0" promptText="Name of Product" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txt_newproductModelnum" focusColor="#c51f5d" layoutX="390.0" layoutY="115.0" prefHeight="26.0" prefWidth="295.0" promptText="(ex.A2221,p6774y, etc.)" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txt_newproductPrice" focusColor="#c51f5d" layoutX="33.0" layoutY="185.0" prefHeight="26.0" prefWidth="141.0" promptText="100" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txt_newproductHigh" focusColor="#c51f5d" layoutX="191.0" layoutY="182.0" prefHeight="26.0" prefWidth="141.0" promptText="10000" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txt_newproductBrand" focusColor="#c51f5d" layoutX="390.0" layoutY="182.0" prefHeight="26.0" prefWidth="295.0" promptText="(ex. HyperX, Razer etc.)" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txt_newproductQuantity" focusColor="#c51f5d" layoutX="38.0" layoutY="255.0" prefHeight="26.0" prefWidth="295.0" promptText="Quantity in stock" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXComboBox fx:id="cb_newcategory" focusColor="#c51f5d" layoutX="388.0" layoutY="256.0" prefHeight="26.0" prefWidth="295.0" promptText="Category" styleClass="jfx-combo-box" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXComboBox>
          </children>
       </AnchorPane>
    </center>

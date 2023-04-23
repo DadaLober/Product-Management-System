@@ -4,6 +4,7 @@
  */
 package com.mycompany.gumana;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -80,14 +81,22 @@ public class FXML_SignupController implements Initializable {
         }
             
     }
+    private String getPassword(){
+        if(txt_showPassword.isVisible()){
+            return txt_showPassword.getText();
+        } else {
+            return txt_password.getText();
+        }
+    }
     @FXML
-    private void btn_register(ActionEvent event){
+    private void btn_register(ActionEvent event) throws NoSuchAlgorithmException {
         conn = connectDB();
-        String Username, Password, lastName, firstName, gender, userType;
+        String Username, Password, lastName, firstName, hashedPass, userType;
         firstName = txt_firstName.getText();
         lastName = txt_lastName.getText();
         Username = txt_username.getText();
-        Password = txt_password.getText();
+        Password = getPassword();;
+        hashedPass = Encryptor.encryptString(Password);
         
         Alert alrt = new Alert(Alert.AlertType.NONE, "", new ButtonType("Try Again"));
         final String INVALID_INPUT = "Invalid Input";
@@ -138,7 +147,7 @@ public class FXML_SignupController implements Initializable {
             public void accept(ButtonType response) {
                 if (response == ButtonType.OK) {
                     try {
-                        String sql = "INSERT INTO `tbl_accounts`(`lastName`,`firstName`,`username`, `password`, `userType`) VALUES ('"+lastName+"','"+firstName+"','"+Username+"','"+Password+"','"+userType+"')";
+                        String sql = "INSERT INTO `tbl_accounts`(`lastName`,`firstName`,`username`, `password`, `userType`) VALUES ('"+lastName+"','"+firstName+"','"+Username+"','"+hashedPass+"','"+userType+"')";
                         statement = conn.prepareStatement(sql);
                         statement.execute();
                         App.setRoot("FXML_Login");

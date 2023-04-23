@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -68,6 +69,8 @@ public class FXML_ManageProductController implements Initializable {
     private TableColumn<ProductModel, String> colCat;
     @FXML
     private TableColumn<ProductModel, String> colBrand;
+    @FXML
+    private TableColumn<ProductModel, Integer> HighPrice;
 
     private final ObservableList<ProductModel> prodList = FXCollections.observableArrayList();
 
@@ -107,7 +110,7 @@ public class FXML_ManageProductController implements Initializable {
         ResultSet result = stmnt.executeQuery();
         prodList.clear();
         while (result.next()) {
-            prodList.add(new ProductModel(result.getInt("prodID"), result.getString("productName"), result.getInt("productPrice"), result.getInt("productQuantity"), result.getString("productModel"), result.getString("productBrand"), result.getString("productCategory")));
+            prodList.add(new ProductModel(result.getInt("prodID"), result.getString("productName"), result.getInt("productPrice"),result.getInt("productHigh"), result.getInt("productQuantity"), result.getString("productModel"), result.getString("productBrand"), result.getString("productCategory")));
         }
     }
 
@@ -123,6 +126,7 @@ public class FXML_ManageProductController implements Initializable {
         }
         colName.setCellValueFactory(new PropertyValueFactory("name"));
         colPrice.setCellValueFactory(new PropertyValueFactory("price"));
+        HighPrice.setCellValueFactory(new PropertyValueFactory("high"));
         colQuantity.setCellValueFactory(new PropertyValueFactory("quantity"));
         colModel.setCellValueFactory(new PropertyValueFactory("model"));
         colBrand.setCellValueFactory(new PropertyValueFactory("brand"));
@@ -141,6 +145,7 @@ public class FXML_ManageProductController implements Initializable {
 
                 return prodModel.getName().toLowerCase().contains(keyword)
                         || String.valueOf(prodModel.getPrice()).toLowerCase().contains(keyword)
+                        || String.valueOf(prodModel.getQuantity()).toLowerCase().contains(keyword)
                         || prodModel.getModel().toLowerCase().contains(keyword)
                         || prodModel.getBrand().toLowerCase().contains(keyword)
                         || prodModel.getCategory().toLowerCase().contains(keyword);
@@ -172,10 +177,12 @@ public class FXML_ManageProductController implements Initializable {
 
     @FXML
     private void addProductButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_AddProduct.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML_AddProduct.fxml"));
+        Scene scene = new Scene(root);
         Stage newWindow = new Stage();
         newWindow.initStyle(StageStyle.UNDECORATED);
-        newWindow.setScene(new Scene(loader.load()));
+        newWindow.setScene(scene);
+        new animatefx.animation.FadeInDown(root).play();
         //newWindow.initModality(Modality.APPLICATION_MODAL);
         newWindow.initOwner(((Node) event.getSource()).getScene().getWindow());
         newWindow.showAndWait();
@@ -194,13 +201,15 @@ public class FXML_ManageProductController implements Initializable {
     @FXML
     private void btn_actionUpdate(ActionEvent event) {
         try {
-            Scene newScene = new Scene(FXMLLoader.load(App.class.getResource("FXML_Update.fxml")));
-            Stage newStage = new Stage();
-            newStage.initStyle(StageStyle.UNDECORATED);
-            newStage.setScene(newScene);
-            newStage.initOwner(((Node) event.getSource()).getScene().getWindow());
-            //newStage.initModality(Modality.APPLICATION_MODAL);
-            newStage.showAndWait();
+            Parent root = FXMLLoader.load(getClass().getResource("FXML_Update.fxml"));
+            Scene scene = new Scene(root);
+            Stage newWindow = new Stage();
+            newWindow.initStyle(StageStyle.UNDECORATED);
+            newWindow.setScene(scene);
+            new animatefx.animation.FadeInDown(root).play();
+            //newWindow.initModality(Modality.APPLICATION_MODAL);
+            newWindow.initOwner(((Node) event.getSource()).getScene().getWindow());
+            newWindow.showAndWait();
             RefreshProdList();
             selectedProd = null;
             viewProduct.getSelectionModel().clearSelection();

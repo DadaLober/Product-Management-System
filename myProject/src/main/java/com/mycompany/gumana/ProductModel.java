@@ -12,15 +12,17 @@ public class ProductModel {
     private int id;
     private String name;
     private int price;
+    private int high;
     private int quantity;
     private String model;
     private String brand;
     private String category;
 
-    public ProductModel(int id, String name, int price, int quantity, String model, String brand, String category) {
+    public ProductModel(int id, String name, int price,int high, int quantity, String model, String brand, String category) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.high = high;
         this.quantity = quantity;
         this.model = model;
         this.brand = brand;
@@ -34,8 +36,6 @@ public class ProductModel {
     public void setId(int id) {
         this.id = id;
     }
-
-
 
     public String getName() {
         return name;
@@ -51,6 +51,14 @@ public class ProductModel {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getHigh() {
+        return high;
+    }
+
+    public void setHigh(int high) {
+        this.high = high;
     }
 
     public int getQuantity() {

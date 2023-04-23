@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
@@ -21,7 +22,7 @@
    <center>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="380.0" style="-fx-background-color: #243447;">
          <children>
-            <Button fx:id="btn_register" layoutX="172.0" layoutY="408.0" mnemonicParsing="false" onAction="#btn_register" prefHeight="44.0" prefWidth="79.0" style="-fx-background-color: #243447;" styleClass="update-btn" textFill="#eeeeee">
+            <Button fx:id="btn_register" layoutX="172.0" layoutY="440.0" mnemonicParsing="false" onAction="#btn_register" prefHeight="65.0" prefWidth="73.0" style="-fx-background-color: #243447;" styleClass="angleleft" stylesheets="@style.css" textFill="#eeeeee">
                <font>
                   <Font name="Arial Bold" size="21.0" />
                </font>
@@ -32,31 +33,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="14.0" layoutY="219.0" text="First Name:" textFill="WHITE">
-               <font>
-                  <Font name="Verdana" size="17.0" />
-               </font>
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding>
-            </Label>
-            <TextField fx:id="txt_firstName" layoutX="154.0" layoutY="219.0" prefHeight="30.0" prefWidth="250.0" promptText="First Name">
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding>
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-            </TextField>
-            <Label layoutX="14.0" layoutY="279.0" text="Last Name:" textFill="WHITE">
-               <font>
-                  <Font name="Verdana" size="17.0" />
-               </font>
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding>
-            </Label>
-            <Button fx:id="btn_balik" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#btn_balik" prefHeight="44.0" prefWidth="46.0" style="-fx-background-color: #243447;">
+            <Button fx:id="btn_balik" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#btn_balik" prefHeight="44.0" prefWidth="46.0" style="-fx-background-color: #243447;" styleClass="angleright" stylesheets="@style.css">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -67,75 +44,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <CheckBox fx:id="cb_showPassword" layoutX="151.0" layoutY="319.0" mnemonicParsing="false" onAction="#actionshowPassword" text="Show Password" textFill="WHITE">
-               <font>
-                  <Font name="Verdana" size="11.0" />
-               </font>
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </CheckBox>
-            <TextField fx:id="txt_lastName" layoutX="154.0" layoutY="279.0" prefHeight="30.0" prefWidth="250.0" promptText="Last Name">
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding>
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="txt_username" layoutX="154.0" layoutY="99.0" prefHeight="30.0" prefWidth="250.0" promptText="Username">
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding>
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-            </TextField>
-            <PasswordField fx:id="txt_password" layoutX="154.0" layoutY="159.0" prefHeight="30.0" prefWidth="250.0" promptText="Password">
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding>
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-            </PasswordField>
-            <TextField fx:id="txt_showPassword" layoutX="154.0" layoutY="159.0" prefHeight="30.0" prefWidth="250.0" promptText="Password">
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding>
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-            </TextField>
-            <RadioButton fx:id="ra_user" layoutX="174.0" layoutY="359.0" mnemonicParsing="false" text="User" textFill="WHITE">
-               <font>
-                  <Font name="Verdana" size="17.0" />
-               </font>
-               <toggleGroup>
-                  <ToggleGroup fx:id="tg_userType" />
-               </toggleGroup>
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </RadioButton>
-            <RadioButton fx:id="ra_admin" layoutX="294.0" layoutY="359.0" mnemonicParsing="false" text="Admin" textFill="WHITE" toggleGroup="$tg_userType">
-               <font>
-                  <Font name="Verdana" size="17.0" />
-               </font>
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </RadioButton>
-            <Label layoutX="14.0" layoutY="359.0" text="Account Type:" textFill="WHITE">
+            <Label layoutX="21.0" layoutY="395.0" text="Account Type:" textFill="WHITE">
                <font>
                   <Font name="Verdana" size="17.0" />
                </font>
@@ -151,8 +60,72 @@
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </padding>
             </Label>
-            <FontIcon iconColor="#c51f5d" iconLiteral="fas-user" iconSize="30" layoutX="91.0" layoutY="125.0" />
-            <FontIcon iconColor="#c51f5d" iconLiteral="fas-unlock" iconSize="30" layoutX="91.0" layoutY="185.0" />
+            <FontIcon iconColor="#c51f5d" iconLiteral="fas-user" iconSize="30" layoutX="60.0" layoutY="134.0" />
+            <FontIcon iconColor="#c51f5d" iconLiteral="fas-unlock" iconSize="30" layoutX="60.0" layoutY="189.0" />
+            <JFXTextField fx:id="txt_username" focusColor="#c51f5d" layoutX="120.0" layoutY="100.0" prefHeight="30.0" prefWidth="250.0" promptText="Username" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txt_firstName" focusColor="#c51f5d" layoutX="120.0" layoutY="230.0" prefHeight="30.0" prefWidth="250.0" promptText="First Name" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txt_lastName" focusColor="#c51f5d" layoutX="120.0" layoutY="295.0" prefHeight="30.0" prefWidth="250.0" promptText="Last Name" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txt_showPassword" focusColor="#c51f5d" layoutX="120.0" layoutY="165.0" prefHeight="30.0" prefWidth="250.0" promptText="Password" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField fx:id="txt_password" focusColor="#c51f5d" layoutX="120.0" layoutY="165.0" prefHeight="30.0" prefWidth="250.0" promptText="Password" styleClass="textcolorwhite" stylesheets="@style.css" unFocusColor="#eeeeee">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXCheckBox fx:id="cb_showPassword" checkedColor="#c51f5d" layoutX="120.0" layoutY="350.0" onAction="#actionshowPassword" text="Show Password" textFill="#eeeeee" unCheckedColor="#eeeeee">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXCheckBox>
+            <JFXRadioButton fx:id="ra_user" layoutX="152.0" layoutY="398.0" text="User" textFill="#eeeeee">
+               <unSelectedColor>
+                  <Color red="0.9333333373069763" green="0.9333333373069763" blue="0.9333333373069763" />
+               </unSelectedColor>
+               <selectedColor>
+                  <Color red="0.772549033164978" green="0.12156862765550613" blue="0.364705890417099" />
+               </selectedColor>
+               <font>
+                  <Font name="Verdana" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <toggleGroup>
+                  <ToggleGroup fx:id="tg_userType" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="ra_admin" layoutX="253.0" layoutY="398.0" text="Admin" textFill="#eeeeee" toggleGroup="$tg_userType">
+               <unSelectedColor>
+                  <Color red="0.9333333373069763" green="0.9333333373069763" blue="0.9333333373069763" />
+               </unSelectedColor>
+               <selectedColor>
+                  <Color red="0.772549033164978" green="0.12156862765550613" blue="0.364705890417099" />
+               </selectedColor>
+               <font>
+                  <Font name="Verdana" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXRadioButton>
          </children>
       </AnchorPane>
    </center>
