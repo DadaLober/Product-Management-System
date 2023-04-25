@@ -6,7 +6,7 @@ package com.mycompany.gumana;
 
 /**
  *
- * @author Ranillo
+ * @author jm
  */
 public class ProductModel {
     private int id;

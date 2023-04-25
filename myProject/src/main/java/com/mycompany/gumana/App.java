@@ -3,7 +3,6 @@ package com.mycompany.gumana;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
@@ -11,9 +10,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
@@ -49,7 +45,7 @@ public class App extends Application {
         });
         stage.setScene(scene);
         stage.show();
-        new animatefx.animation.FadeInDown(root).play();
+        new animatefx.animation.FadeIn(root).play();
     }
 
     public static void setRoot(String fxml) throws IOException {

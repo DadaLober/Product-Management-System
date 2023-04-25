@@ -95,7 +95,7 @@
                   <Font name="Tahoma" size="30.0" />
                </font>
             </Label>
-            <TableView fx:id="viewProduct" layoutX="35.0" layoutY="160.0" onMouseClicked="#selectProd" prefHeight="516.0" prefWidth="760.0" style="-fx-background-color: #243447;">
+            <TableView fx:id="viewProduct" layoutX="35.0" layoutY="160.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#selectProd" prefHeight="516.0" prefWidth="760.0" style="-fx-background-color: #243447;">
               <columns>
                 <TableColumn fx:id="colName" prefWidth="150.0" text="Name" />
                 <TableColumn fx:id="colPrice" prefWidth="100.0" text="Lowest Price" />

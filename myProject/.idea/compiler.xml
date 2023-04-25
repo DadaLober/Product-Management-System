@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="myProject1" options="--add-exports javafx.graphics/com.sun.javafx.stage=com.mycompany.gumana" />
+      <module name="myProject1" options="" />
     </option>
   </component>
 </project>
